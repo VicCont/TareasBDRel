@@ -3,7 +3,7 @@ select c.first_name || ' ' || c.last_name ,c.email  from customer c join address
 join city c2 using (city_id) join country c3 using (country_id)
 where c3.country='Canada';
 --Qué cliente ha rentado más de nuestra sección de adultos?
-select c.first_name || ' ' || c.last_name ,count(*) as cuenta from (select f.film_id  from film f where f.rating ='NC-17') 
+select c.first_name || ' ' || c.last_name ,count(*) as cuenta from (select f.film_id  from film f where f.rating ='NC-17' or f.rating='R') 
 as aux join inventory i using (film_id) 
 join rental r using (inventory_id) join customer c using (customer_id)
 group by customer_id 
