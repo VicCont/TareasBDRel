@@ -9,4 +9,5 @@ select custid, sum(delta) as suma_delta, sum(tiempo) as tot_tiemp from diferenci
 )
 select custid,suma_delta /tot_tiemp  ,case when (suma_delta/tot_tiemp)<0 then 'malo'
  when (suma_delta/tot_tiemp) between 0 and 100 then 'regular' 
+ when tot_tiemp is null then 'indefinido'
 else 'bueno' end from cuentas  cue;
